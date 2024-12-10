@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1em;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+        }
+        h2.result {
+            padding: 10px;
+            color: #fff;
+            border-radius: 5px;
+        }
+        h2.success {
+            background-color: #28a745;
+        }
+        h2.error {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advanced Calculator</h1>
+    <form method="post" action="/calculate/">
+        {% csrf_token %}
+        <label for="numbers">Enter up to 4 numbers:</label>
+        <input type="text" name="numbers" placeholder="Number 1" required>
+        <input type="text" name="numbers" placeholder="Number 2" required>
+        <input type="text" name="numbers" placeholder="Number 3">
+        <input type="text" name="numbers" placeholder="Number 4">
+
+        <label for="operation">Select Operation:</label>
+        <select name="operation" required>
+            <option value="addition">Addition</option>
+            <option value="subtraction">Subtraction</option>
+            <option value="multiplication">Multiplication</option>
+            <option value="division">Division</option>
+        </select>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result is not None %}
+        <h2 class="result success">Result: {{ result }}</h2>
+    {% elif error %}
+        <h2 class="result error">Error: {{ error }}</h2>
+    {% endif %}
+</body>
+</html>
