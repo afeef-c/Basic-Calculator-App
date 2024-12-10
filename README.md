@@ -16,4 +16,4 @@ This is a simple calculator app built with Django. It allows users to input up t
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/basic-calculator.git
+   git clone https://github.com/afeef-c/Basic-Calculator-App.git
